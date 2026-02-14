@@ -9,8 +9,8 @@
 		<!-- <git name="lime" url="https://github.com/CodenameCrew/cne-lime" />  disabled for now until fixed -->
 
 		<!-- Flixel -->
-		<git name="flixel" url="https://github.com/HomuHomu833-haxe-stuff/cne-flixel" />
-		<git name="flixel-addons" url="https://github.com/HomuHomu833-haxe-stuff/cne-flixel-addons" />
+		<git name="flixel" url="https://github.com/CodenameCrew/cne-flixel" />
+		<git name="flixel-addons" url="https://github.com/CodenameCrew/cne-flixel-addons" />
 
 		<!-- Other Libraries -->
 		<git name="hscript-improved" url="https://github.com/CodenameCrew/hscript-improved" ref="codename-dev" />
@@ -26,8 +26,8 @@
 
 		<lib name="nape-haxe4" />
 
-		<git name="format" url="https://github.com/FNF-SE/format" />
-		<git name="hxp" url="https://github.com/FNF-SE/hxp" />
+		<lib global="true" name="hxp" /> <lib name="hxp" />
+		<lib global="true" name="format" /> <lib name="format" />
 
 		<git name="hxcpp" url="https://github.com/CodenameCrew/cne-hxcpp" />
 
