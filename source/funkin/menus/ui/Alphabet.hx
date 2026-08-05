@@ -895,7 +895,7 @@ class Alphabet extends FlxSprite {
 	}
 
 	override function destroy():Void {
-		originOffset = FlxDestroyUtil.destroy(originOffset);
+		originOffset = FlxDestroyUtil.put(originOffset);
 		__drawScale = FlxDestroyUtil.put(__drawScale);
 		__renderData = null;
 		__laneWidths = null;

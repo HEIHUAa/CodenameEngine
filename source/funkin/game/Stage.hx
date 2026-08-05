@@ -364,7 +364,6 @@ class Stage extends FlxBasic implements IBeatReceiver {
 			for (e in stageSprites)
 				e?.destroy();
 
-		startCam.put();
 		super.destroy();
 	}
 

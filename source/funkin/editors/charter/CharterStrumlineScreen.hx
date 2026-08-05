@@ -141,6 +141,8 @@ class CharterStrumlineScreen extends UISubstateWindow {
 		hudYStepper = new UINumericStepper(hudXStepper.x + 84 - 32 + 26, hudXStepper.y, startingPos.y, 0.001, 2, null, null, 84);
 		add(hudYStepper);
 
+		startingPos.put();
+
 		visibleCheckbox = new UICheckbox(hudYStepper.x + hudYStepper.bWidth + 42, hudYStepper.y + 9, TU.translate("charterStrumLine.visible"), strumLine.visible);
 		add(visibleCheckbox);
 

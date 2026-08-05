@@ -1,6 +1,7 @@
 package funkin.editors.charter;
 
 import flixel.group.FlxGroup;
+import flixel.util.FlxDestroyUtil;
 import flixel.text.FlxText.FlxTextFormat;
 import flixel.text.FlxText.FlxTextFormatMarkerPair;
 import funkin.backend.chart.Chart;
@@ -471,5 +472,11 @@ class SongCreationScreen extends UISubstateWindow {
 			if (events != null) CoolUtil.safeSaveFile('$songFolder/events${meta.variant != null && meta.variant != "" ? "-" + meta.variant : ""}.json', Json.stringify({events: events}, Flags.JSON_PRETTY_PRINT));
 			#end
 		});
+	}
+
+	override function destroy() {
+		super.destroy();
+		pageSizes = FlxDestroyUtil.putArray(pageSizes);
+		importPageSizes = FlxDestroyUtil.putArray(importPageSizes);
 	}
 }

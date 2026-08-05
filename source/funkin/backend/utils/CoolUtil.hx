@@ -1021,7 +1021,6 @@ final class CoolUtil
 		result.x = (((result.x - camera.scroll.x) * camera.zoom) - ((camera.width * 0.5) * (camera.zoom - camera.initialZoom)));
 		result.y = (((result.y - camera.scroll.y) * camera.zoom) - ((camera.height * 0.5) * (camera.zoom - camera.initialZoom)));
 
-		object.putWeak();
 		return result;
 	}
 
@@ -1035,8 +1034,10 @@ final class CoolUtil
 	public static function mouseOverlaps(sprite:FlxObject, ?camera:FlxCamera) {
 		var camToCheck:FlxCamera = camera ?? sprite.camera;
 		var posthing:FlxPoint = FlxG.mouse.getWorldPosition(camToCheck);
-
-		return posthing != null && FlxMath.inBounds(posthing.x, sprite.x, sprite.x + sprite.width) && FlxMath.inBounds(posthing.y, sprite.y, sprite.y + sprite.height);
+		var overlaps:Bool = posthing != null && FlxMath.inBounds(posthing.x, sprite.x, sprite.x + sprite.width) && FlxMath.inBounds(posthing.y, sprite.y, sprite.y + sprite.height);
+		if (posthing != null)
+			posthing.put();
+		return overlaps;
 	}
 
 	/**

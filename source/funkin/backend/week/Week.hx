@@ -84,7 +84,7 @@ class Week {
 			name: char.att.name,
 			spritePath: char.att.sprite,
 			scale: Std.parseFloat(char.getAtt('scale')).getDefault(1),
-			offset: FlxPoint.get(
+			offset: new FlxPoint(
 				Std.parseFloat(char.getAtt('x')).getDefault(0),
 				Std.parseFloat(char.getAtt('y')).getDefault(0)
 			)

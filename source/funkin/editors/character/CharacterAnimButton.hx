@@ -302,7 +302,7 @@ class CharacterAnimButton extends UIButton {
 		if (newOffsetX != null && newOffsetY != null && newOffsetX == animData.x && newOffsetY == animData.y)
 			return;
 		
-		var oldPosition:FlxPoint = FlxPoint.get(animData.x, animData.y);
+		var oldPosition:FlxPoint = FlxPoint.weak(animData.x, animData.y);
 
 		if (newOffsetX != null) animData.x = newOffsetX;
 		if (newOffsetY != null) animData.y = newOffsetY;
@@ -317,7 +317,7 @@ class CharacterAnimButton extends UIButton {
 
 		updateText();
 
-		if (addToUndo) CharacterEditor.undos.addToUndo(CAnimEditOffset(ID, oldPosition, FlxPoint.get(animData.x, animData.y)));
+		if (addToUndo) CharacterEditor.undos.addToUndo(CAnimEditOffset(ID, oldPosition, FlxPoint.weak(animData.x, animData.y)));
 	}
 
 	public function changeFPS(newFPS:Float, addToUndo:Bool = true) @:privateAccess {

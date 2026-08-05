@@ -2,6 +2,7 @@ package funkin.game;
 
 import flixel.graphics.FlxGraphic;
 import flixel.math.FlxPoint;
+import flixel.util.FlxDestroyUtil;
 import flixel.util.typeLimit.OneOfTwo;
 import funkin.backend.scripting.events.healthicon.HealthIconChangeEvent;
 
@@ -399,6 +400,11 @@ class HealthIcon extends FunkinSprite
 	override function updateHitbox():Void {
 		super.updateHitbox();
 		offset += extraOffsets;
+	}
+
+	override function destroy():Void {
+		extraOffsets = FlxDestroyUtil.put(extraOffsets);
+		super.destroy();
 	}
 }
 

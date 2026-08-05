@@ -338,9 +338,8 @@ class CharacterEditor extends UIState {
 	}
 
 	override function destroy() {
-		_point.put();
-		draggingOffset.put();
 		clipboard.put();
+		_nextScroll.put();
 
 		super.destroy();
 		if(Framerate.isLoaded) {
@@ -416,10 +415,10 @@ class CharacterEditor extends UIState {
 				_change_offset((draggingOffset.x * (character.isFlippedOffsets()  ? -1 : 1)), draggingOffset.y);
 
 				draggingOffset.set(0, 0); draggingCharacter = false;
-				character.extraOffset = draggingOffset;
+				character.extraOffset.set(0, 0);
 			} else {
 				draggingOffset.x += FlxG.mouse.deltaScreenX; draggingOffset.y += FlxG.mouse.deltaScreenY;
-				character.extraOffset = draggingOffset;
+				character.extraOffset.set(draggingOffset.x, draggingOffset.y);
 			}
 		} else {
 			var point = FlxG.mouse.getWorldPosition(charCamera, _point);
@@ -665,7 +664,7 @@ class CharacterEditor extends UIState {
 	function clearOffsets(addToUndo:Bool = true) {
 		var oldOffsets:Map<String, FlxPoint> = [
 			for (anim => offsets in character.animOffsets)
-				anim => offsets.clone()
+				anim => offsets.clone(FlxPoint.weak())
 		];
 
 		for (anim => button in characterAnimsWindow.animButtons)

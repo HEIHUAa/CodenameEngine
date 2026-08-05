@@ -200,6 +200,11 @@ class PlayState extends MusicBeatState
 	public var cameraFocusOffset:FlxPoint;
 
 	/**
+	 * Reusable point for camera focus calls (focusOn() puts passed points back into the pool via putWeak()).
+	 */
+	private var __camFollowFocusPoint:FlxPoint = new FlxPoint();
+
+	/**
 	 * Previous cam follow.
 	 */
 	private static var smoothTransitionData:PlayStateTransitionData;
@@ -874,7 +879,7 @@ class PlayState extends MusicBeatState
 			MusicBeatState.skipTransIn = true;
 			camFollow.setPosition(smoothTransitionData.camFollowX, smoothTransitionData.camFollowY);
 		} else {
-			FlxG.camera.focusOn(camFollow.getPosition(FlxPoint.weak()));
+			FlxG.camera.focusOn(camFollow.getPosition(__camFollowFocusPoint));
 		}
 		smoothTransitionData = null;
 
@@ -2059,6 +2064,8 @@ class PlayState extends MusicBeatState
 
 		if (event.cancelled || !event.displayRating) { // TODO: Find a better way for this?
 			event.ratingSprite.kill();
+			event.velocity.put();
+			event.position.put();
 			return;
 		}
 
@@ -2101,6 +2108,8 @@ class PlayState extends MusicBeatState
 
 			if (event.cancelled || !event.displayCombo) { // TODO: Find a better way for this?
 				event.comboSprite.kill();
+				event.velocity.put();
+				event.position.put();
 				return;
 			}
 
@@ -2147,6 +2156,8 @@ class PlayState extends MusicBeatState
 
 				if (event.cancelled || !event.displayNumbers) { // TODO: Find a better way for this?
 					event.numberSprite.kill();
+					event.velocity.put();
+					event.position.put();
 					continue;
 				}				
 

@@ -123,7 +123,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 			if (newPosX != null && newPosX == character.globalOffset.x) return;
 			if (newPosY != null && newPosY == character.globalOffset.y) return;
 		}
-		var oldPosition:FlxPoint = character.globalOffset.clone();
+		var oldPosition:FlxPoint = character.globalOffset.clone(FlxPoint.weak());
 
 		if (newPosX != null) character.globalOffset.x = newPosX;
 		if (newPosY != null) character.globalOffset.y = newPosY;
@@ -133,8 +133,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 		positionXStepper.label.text = Std.string(character.globalOffset.x);
 		positionYStepper.label.text = Std.string(character.globalOffset.y);
 
-		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditPosition(oldPosition, character.globalOffset.clone()));
-		else oldPosition.put();
+		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditPosition(oldPosition, character.globalOffset.clone(FlxPoint.weak())));
 	}
 
 	public function changeScale(newScale:Float, addToUndo:Bool = true) {
@@ -219,7 +218,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 			if (newPosX != null && newPosX == character.cameraOffset.x) return;
 			if (newPosY != null && newPosY == character.cameraOffset.y) return;
 		}
-		var oldCamPosition:FlxPoint = character.cameraOffset.clone();
+		var oldCamPosition:FlxPoint = character.cameraOffset.clone(FlxPoint.weak());
 
 		if (newPosX != null) character.cameraOffset.x = newPosX;
 		if (newPosY != null) character.cameraOffset.y = newPosY;
@@ -227,8 +226,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 		cameraXStepper.label.text = Std.string(character.cameraOffset.x);
 		cameraYStepper.label.text = Std.string(character.cameraOffset.y);
 
-		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditCamPosition(oldCamPosition, character.cameraOffset.clone()));
-		else oldCamPosition.put();
+		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditCamPosition(oldCamPosition, character.cameraOffset.clone(FlxPoint.weak())));
 	}
 
 	public function changeAntialiasing(newAntialiasing:Bool, addToUndo:Bool = true) {

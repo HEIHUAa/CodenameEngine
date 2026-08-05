@@ -166,7 +166,7 @@ class Strum extends FlxSprite {
 	static var __lastStrumH:Float = Math.NaN;
 	static var __lastStrumHalfW:Float = 0;
 	static var __lastStrumHalfH:Float = 0;
-	static var __noteOffset:FlxPoint = FlxPoint.get();
+	static var __noteOffset:FlxPoint = new FlxPoint();
 	static var __lastNoteAngle:Float = Math.NaN;
 	static var __lastAngleCos:Float = 0;
 	static var __lastAngleSin:Float = 0;

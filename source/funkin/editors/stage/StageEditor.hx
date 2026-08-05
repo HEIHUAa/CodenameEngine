@@ -409,7 +409,8 @@ class StageEditor extends UIState {
 
 	override function destroy() {
 		super.destroy();
-		nextScroll = FlxDestroyUtil.destroy(nextScroll);
+		movedTillRel = FlxDestroyUtil.put(movedTillRel);
+		nextScroll = FlxDestroyUtil.put(nextScroll);
 		if(Framerate.isLoaded) {
 			Framerate.fpsCounter.alpha = 1;
 			Framerate.memoryCounter.alpha = 1;
@@ -978,6 +979,9 @@ class StageEditor extends UIState {
 
 			buttonBoxes.push(corners[i]);
 		}
+
+		for (corner in transformedCorners)
+			corner.put();
 	}
 
 	public static function calcSpriteBounds(sprite:FunkinSprite) {

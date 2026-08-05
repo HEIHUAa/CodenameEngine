@@ -3,6 +3,7 @@ package funkin.editors.ui;
 import flixel.FlxCamera;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
+import flixel.util.FlxDestroyUtil;
 import flixel.util.FlxSort;
 
 class UIButtonList<T:UIButton> extends UIWindow {
@@ -15,7 +16,7 @@ class UIButtonList<T:UIButton> extends UIWindow {
 
 	public var buttonSpacing:Float = 16;
 	public var buttonSize:FlxPoint = null;
-	public var buttonOffset:FlxPoint = FlxPoint.get();
+	public var buttonOffset:FlxPoint = null;
 
 	public var dragging:Bool = false;
 	public var dragCallback:(T,Int,Int)->Void;
@@ -27,6 +28,7 @@ class UIButtonList<T:UIButton> extends UIWindow {
 		if (buttonSpacing != null) this.buttonSpacing = buttonSpacing;
 		this.buttonSize = buttonSize;
 		if (buttonOffset != null) this.buttonOffset = buttonOffset;
+		if (this.buttonOffset == null) this.buttonOffset = FlxPoint.get();
 		super(x, y, width, height, windowName);
 
 		buttonCameras = new FlxCamera(Std.int(x), Std.int(y+cameraSpacing), width, height-cameraSpacing-1);
@@ -142,6 +144,9 @@ class UIButtonList<T:UIButton> extends UIWindow {
 
 	override function destroy() {
 		super.destroy();
+
+		buttonSize = FlxDestroyUtil.put(buttonSize);
+		buttonOffset = FlxDestroyUtil.put(buttonOffset);
 
 		if(buttonCameras != null) {
 			if (FlxG.cameras.list.contains(buttonCameras))

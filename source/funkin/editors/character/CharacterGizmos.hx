@@ -69,8 +69,6 @@ class CharacterGizmos extends FlxSprite {
 				CoolUtil.pointToScreenPosition(FlxPoint.weak(camPos.x, camPos.y + 8), FlxG.camera, FlxPoint.weak()),
 			1, 0xFF00A0B9);
 
-			camPos.put();
-
 		}
 	}
 }

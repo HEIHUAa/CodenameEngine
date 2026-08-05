@@ -215,7 +215,7 @@ class CharterEventScreenNew extends MusicBeatSubstate {
 	}
 
 	public function boundWindow() {
-		var screenPos:FlxPoint = CoolUtil.pointToScreenPosition(FlxPoint.get(chartEvent.x, chartEvent.y + chartEvent.bHeight));
+		var screenPos:FlxPoint = CoolUtil.pointToScreenPosition(FlxPoint.weak(chartEvent.x, chartEvent.y + chartEvent.bHeight));
 		screenPos.x -= chartEvent.global ? -8 : 68+12; screenPos.y += 8;
 
 		bg.bWidth = cam.width = cast bWidth-6;

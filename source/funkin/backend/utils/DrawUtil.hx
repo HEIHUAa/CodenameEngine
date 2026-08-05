@@ -58,8 +58,6 @@ final class DrawUtil {
 		line.angle = 0;
 		line.scale.x = line.scale.y = 1;
 		line.updateHitbox();
-
-		point1.putWeak(); point2.putWeak();
 	}
  
 	public static inline function drawRect(rect:FlxRect, thickness:Float = 1, ?color:Null<FlxColor>) {

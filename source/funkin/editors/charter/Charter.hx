@@ -941,7 +941,7 @@ class Charter extends UIState {
 							if (!FlxG.keys.pressed.SHIFT)
 								changePoint.x -= ((s.step + verticalChange) - quantStepRounded(s.step+verticalChange, verticalChange > 0 ? 0.35 : 0.65));
 
-							var boundedChange:FlxPoint = changePoint.clone();
+							var boundedChange:FlxPoint = changePoint.clone(FlxPoint.weak());
 
 							// Some maths, so cool bro -lunar (i don't know why i quote my self here)
 							if (s.step + changePoint.x < 0) boundedChange.x += Math.abs(s.step + changePoint.x);

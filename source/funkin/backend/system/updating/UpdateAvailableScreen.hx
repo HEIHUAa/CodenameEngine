@@ -117,16 +117,20 @@ class UpdateAvailableScreen extends MusicBeatState {
 		}
 
 		var newPos = FlxG.mouse.getScreenPosition();
+		var newPosY:Float = newPos.y;
 		if (oldPos.x != newPos.x || oldPos.y != newPos.y) {
 			if (newPos.y >= optionsBG.y) {
 				if (installSelected != (installSelected = (newPos.x < (FlxG.width / 2)))) {
 					changeSelection();
 				}
 			}
+			oldPos.put(); // return the previous pooled point before replacing it
 			oldPos = newPos;
+		} else {
+			newPos.put(); // point not used, return it to the pool
 		}
 
-		if (controls.ACCEPT || (newPos.y >= optionsBG.y && FlxG.mouse.justPressed))
+		if (controls.ACCEPT || (newPosY >= optionsBG.y && FlxG.mouse.justPressed))
 			select();
 	}
 
