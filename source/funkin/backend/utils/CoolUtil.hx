@@ -1021,6 +1021,7 @@ final class CoolUtil
 		result.x = (((result.x - camera.scroll.x) * camera.zoom) - ((camera.width * 0.5) * (camera.zoom - camera.initialZoom)));
 		result.y = (((result.y - camera.scroll.y) * camera.zoom) - ((camera.height * 0.5) * (camera.zoom - camera.initialZoom)));
 
+		object.putWeak();
 		return result;
 	}
 

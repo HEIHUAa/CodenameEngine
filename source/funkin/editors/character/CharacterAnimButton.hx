@@ -318,6 +318,7 @@ class CharacterAnimButton extends UIButton {
 		updateText();
 
 		if (addToUndo) CharacterEditor.undos.addToUndo(CAnimEditOffset(ID, oldPosition, FlxPoint.weak(animData.x, animData.y)));
+		else oldPosition.putWeak();
 	}
 
 	public function changeFPS(newFPS:Float, addToUndo:Bool = true) @:privateAccess {

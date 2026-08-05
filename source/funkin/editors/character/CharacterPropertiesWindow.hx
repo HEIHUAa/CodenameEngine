@@ -134,6 +134,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 		positionYStepper.label.text = Std.string(character.globalOffset.y);
 
 		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditPosition(oldPosition, character.globalOffset.clone(FlxPoint.weak())));
+		else oldPosition.putWeak();
 	}
 
 	public function changeScale(newScale:Float, addToUndo:Bool = true) {
@@ -227,6 +228,7 @@ class CharacterPropertiesWindow extends UISliceSprite {
 		cameraYStepper.label.text = Std.string(character.cameraOffset.y);
 
 		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditCamPosition(oldCamPosition, character.cameraOffset.clone(FlxPoint.weak())));
+		else oldCamPosition.putWeak();
 	}
 
 	public function changeAntialiasing(newAntialiasing:Bool, addToUndo:Bool = true) {

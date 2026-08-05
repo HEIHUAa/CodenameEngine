@@ -66,6 +66,7 @@ class CharacterGhost extends Character {
 		var daOffset:FlxPoint = animOffsets.get(anim);
 		if (daOffset != null) {
 			frameOffset.set(daOffset.x, daOffset.y);
+			daOffset.putWeak();
 		}
 
 		offset.set(globalOffset.x * (isPlayer != playerOffsets ? 1 : -1), -globalOffset.y);

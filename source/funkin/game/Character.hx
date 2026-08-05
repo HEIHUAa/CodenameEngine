@@ -511,6 +511,7 @@ class Character extends FunkinSprite implements IBeatReceiver implements IOffset
 			var offset:FlxPoint = getAnimOffset(anim.name);
 			if (FlxMath.roundDecimal(offset.x, 2) != 0) animXml.set("x", Std.string(FlxMath.roundDecimal(offset.x, 2)));
 			if (FlxMath.roundDecimal(offset.y, 2) != 0) animXml.set("y", Std.string(FlxMath.roundDecimal(offset.y, 2)));
+			offset.putWeak();
 
 			if (anim.indices.length > 0)
 				animXml.set("indices", CoolUtil.formatNumberRange(anim.indices));
